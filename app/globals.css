@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Semantic tokens are the only global visual styling. Components use Tailwind. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas: #f2f0e4;
+  --surface: #fffef8;
+  --surface-alt: #e6e8dc;
+  --ink: #243a2e;
+  --muted: #536559;
+  --brand: #075c32;
+  --brand-hover: #034725;
+  --brand-ink: #075c32;
+  --brand-soft: #e6eee3;
+  --line: #c9d6c6;
+  --peach: #f0eadc;
+  --category-active: #566947;
+  --category-hover: #73836e;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #18231b;
+  --surface: #223228;
+  --surface-alt: #304437;
+  --ink: #eff5e9;
+  --muted: #b4c5b1;
+  --brand: #087341;
+  --brand-hover: #0a8b4d;
+  --brand-ink: #b9e1bd;
+  --brand-soft: #2a4934;
+  --line: #405747;
+  --peach: #3b3a2c;
+  --category-active: #566947;
+  --category-hover: #73836e;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-line: var(--line);
+  --color-peach: var(--peach);
+  --color-category-active: var(--category-active);
+  --color-category-hover: var(--category-hover);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply m-0 bg-canvas font-sans text-[13px] text-ink;
+  }
+  button,
+  select {
+    @apply cursor-pointer;
+  }
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:disabled {
+    @apply cursor-not-allowed opacity-45;
+  }
+  button:active:not(:disabled) {
+    @apply scale-[0.98];
+  }
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-ink;
+  }
+  input[type="checkbox"] {
+    @apply size-4 shrink-0 accent-brand;
+  }
+  svg {
+    @apply shrink-0;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Browser printing needs document-wide visibility rules, independent of UI layout. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  [data-print-receipt],
+  [data-print-receipt] * {
+    visibility: visible;
+    color: #111 !important;
+  }
+  dialog::backdrop {
+    display: none;
+  }
+  @page {
+    size: 80mm auto;
+    margin: 2mm;
+  }
 }
