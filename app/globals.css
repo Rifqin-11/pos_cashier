@@ -4,19 +4,20 @@
 
 /* Semantic tokens are the only global visual styling. Components use Tailwind. */
 :root {
-  --canvas: #f2f0e4;
-  --surface: #fffef8;
-  --surface-alt: #e6e8dc;
-  --ink: #243a2e;
+  --canvas: #f3f2e2;
+  --surface: #ffffff;
+  --surface-alt: #f1f2eb;
+  --ink: #18231c;
   --muted: #536559;
-  --brand: #075c32;
+  --brand: #00572e;
   --brand-hover: #034725;
-  --brand-ink: #075c32;
+  --brand-ink: #00572e;
   --brand-soft: #e6eee3;
   --line: #c9d6c6;
   --peach: #f0eadc;
-  --category-active: #566947;
-  --category-hover: #73836e;
+  --category-active: var(--brand);
+  --category-hover: #d4e2d3;
+  --control-line: #7f9f89;
 }
 
 [data-theme="dark"] {
@@ -32,8 +33,9 @@
   --brand-soft: #2a4934;
   --line: #405747;
   --peach: #3b3a2c;
-  --category-active: #566947;
-  --category-hover: #73836e;
+  --category-active: var(--brand);
+  --category-hover: #304e3a;
+  --control-line: #7a9c85;
 }
 
 @theme inline {
@@ -52,6 +54,7 @@
   --color-peach: var(--peach);
   --color-category-active: var(--category-active);
   --color-category-hover: var(--category-hover);
+  --color-control-line: var(--control-line);
 }
 
 @layer base {

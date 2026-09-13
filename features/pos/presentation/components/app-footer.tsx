@@ -5,7 +5,7 @@ import { usePos } from "../pos-provider";
 export function AppFooter() {
   const { setDialog } = usePos();
   return (
-    <footer className="flex shrink-0 items-center justify-between gap-3 border-t border-line bg-white px-5 py-3 text-[11px] text-muted md:px-8 dark:bg-canvas">
+    <footer className="flex shrink-0 items-center justify-between gap-3 border-t border-line bg-canvas px-5 py-3 text-[11px] text-muted md:px-8">
       <span>
         © {new Date().getFullYear()} Mekar Coffee
         <span className="hidden lg:inline"> / Made for your daily flow.</span>

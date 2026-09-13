@@ -23,31 +23,26 @@ const categories = [
     name: "Coffee",
     description: "Espresso dan kopi susu.",
     icon: Coffee,
-    tone: "bg-[#e7eee3] text-[#374335] hover:bg-[#73836e] hover:text-[#f3f6f0]",
   },
   {
     name: "Tea",
     description: "Seduhan yang menenangkan.",
     icon: TeaBag,
-    tone: "bg-[#eef1e8] text-[#374335] hover:bg-[#73836e] hover:text-[#f3f6f0]",
   },
   {
     name: "Pastry & Bites",
     description: "Teman untuk setiap cangkir.",
     icon: Cookie,
-    tone: "bg-[#f1ede3] text-[#374335] hover:bg-[#73836e] hover:text-[#f3f6f0]",
   },
   {
     name: "Ricebowl",
     description: "Mangkuk hangat dan mengenyangkan.",
     icon: BowlFood,
-    tone: "bg-[#e6eee2] text-[#374335] hover:bg-[#73836e] hover:text-[#f3f6f0]",
   },
   {
     name: "Noodle",
     description: "Mie hangat, bumbu berani.",
     icon: ForkKnife,
-    tone: "bg-[#edf0e8] text-[#374335] hover:bg-[#73836e] hover:text-[#f3f6f0]",
   },
 ] as const;
 export function CatalogPage() {
@@ -92,7 +87,7 @@ export function CatalogPage() {
     <>
       <h1 className="sr-only">Kasir</h1>
       <div className="mb-5 flex gap-2.5">
-        <div className="flex min-w-0 flex-1 items-center gap-2 rounded-lg border border-line bg-surface px-3 focus-within:outline-2 focus-within:outline-brand">
+        <div className="flex min-w-0 flex-1 items-center gap-2 rounded-lg border border-control-line bg-surface px-3 focus-within:outline-2 focus-within:outline-brand">
           <MagnifyingGlass size={19} className="text-muted" />
           <input
             ref={search}
@@ -133,10 +128,8 @@ export function CatalogPage() {
         data-testid="category-rail"
         className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:-mx-7 md:px-7"
       >
-        {categories.map(({ name, description, icon: Icon, tone }) => {
-          const active =
-            category === name ||
-            (category === "Semua menu" && name === "Coffee");
+        {categories.map(({ name, description, icon: Icon }) => {
+          const active = category === name;
           return (
             <button
               key={name}
@@ -144,7 +137,7 @@ export function CatalogPage() {
               onClick={() =>
                 setCategory(category === name ? "Semua menu" : name)
               }
-              className={`relative flex min-h-30 w-[178px] shrink-0 snap-start flex-col items-start overflow-hidden rounded-xl border border-transparent p-3 text-left transition-[background-color,color,transform] hover:-translate-y-0.5 md:min-h-33 md:w-[210px] md:p-4 ${active ? "bg-[#075c32] text-[#f3f6f0] ring-2 ring-[#075c32] ring-offset-2 ring-offset-canvas" : tone}`}
+              className={`relative flex min-h-30 w-[178px] shrink-0 snap-start flex-col items-start overflow-hidden rounded-xl border border-transparent p-3 text-left transition-colors duration-200 md:min-h-33 md:w-[210px] md:p-4 ${active ? "bg-category-active text-white" : "bg-surface text-ink hover:bg-category-hover"}`}
             >
               <span className="relative z-1 flex items-center gap-1 rounded-full border border-current/30 px-2 py-0.5 text-[8px]">
                 {products.filter((p) => p.category === name).length} menu

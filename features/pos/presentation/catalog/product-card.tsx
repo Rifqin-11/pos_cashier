@@ -15,7 +15,7 @@ export function ProductCard({
       aria-label={`Tambah ${product.name}`}
       disabled={!product.available}
       onClick={() => onSelect(product)}
-      className="group overflow-hidden rounded-xl border border-line bg-surface p-2 text-left transition-colors hover:border-brand disabled:opacity-60"
+      className="group overflow-hidden rounded-xl border border-control-line bg-surface p-2 text-left transition-colors hover:border-brand disabled:opacity-60"
     >
       <div className="relative aspect-[1.35] overflow-hidden rounded-lg bg-surface-alt">
         <ProductImage

@@ -10,7 +10,7 @@ export function AppHeader() {
   return (
     <header
       data-testid="app-header"
-      className="flex h-17 shrink-0 items-center gap-3 border-b border-line bg-white px-4 md:h-20 md:gap-6 md:px-8 dark:bg-canvas [@media(min-width:768px)_and_(max-height:850px)]:h-16"
+      className="flex h-17 shrink-0 items-center gap-3 border-b border-line bg-canvas px-4 md:h-20 md:gap-6 md:px-8 [@media(min-width:768px)_and_(max-height:850px)]:h-16"
     >
       <button
         onClick={() => navigate("Kasir")}

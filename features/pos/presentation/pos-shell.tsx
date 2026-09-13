@@ -56,11 +56,11 @@ export function PosShell() {
     <div data-testid="pos-app" className="flex h-full flex-col pb-19 md:pb-0">
       <AppHeader />
       <div className="grid min-h-0 flex-1 grid-cols-1 overflow-hidden md:grid-cols-[minmax(0,1fr)_325px] xl:grid-cols-[minmax(0,1fr)_355px] min-[1500px]:grid-cols-[minmax(0,1fr)_390px]">
-        <main className="flex min-h-0 min-w-0 flex-col overflow-hidden bg-white dark:bg-canvas">
+        <main className="flex min-h-0 min-w-0 flex-col overflow-hidden bg-canvas">
           <Navigation />
           <div
             data-testid="page-scroll"
-            className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-white px-5 py-6 md:px-7 dark:bg-canvas"
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-canvas px-5 py-6 md:px-7"
           >
             <Page />
           </div>
